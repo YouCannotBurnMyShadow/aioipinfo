@@ -1,13 +1,13 @@
-:github_url: {{GHBASE}}/{{NAME}}
+:github_url: https://github.com/gormaniac/aioipinfo
 
-Welcome to {{NAME}}'s documentation!
+Welcome to aioipinfo's documentation!
 =======================================
 
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
 
-   {{NAME}}
+   aioipinfo
 
 * :ref:`modindex`
 * :ref:`search`

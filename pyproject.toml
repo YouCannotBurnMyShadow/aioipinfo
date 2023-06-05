@@ -3,9 +3,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "{{NAME}}"
+name = "aioipinfo"
 version = "0.0.1"
-description = "The {{NAME}} Python package"
+description = "The aioipinfo Python package"
 readme = "README.md"
 requires-python = ">=3.11"
 
@@ -13,14 +13,14 @@ requires-python = ">=3.11"
 dependencies = []
 
 [[project.authors]]
-name = "{{AUTHOR}}"
+name = "John Gorman"
 
 [project.license]
 file = "LICENSE"
 
 [project.urls]
-Homepage = "{{GHBASE}}/{{NAME}}"
-Documentation = "{{DOCSBASE}}/{{NAME}}/"
+Homepage = "https://github.com/gormaniac/aioipinfo"
+Documentation = "https://gormo.com/aioipinfo/"
 
 [tool.setuptools.packages.find]
 namespaces = true
