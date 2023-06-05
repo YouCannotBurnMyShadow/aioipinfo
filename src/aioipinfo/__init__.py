@@ -57,7 +57,7 @@ def parse_loc(loc: str) -> tuple[str, str]:
 @dataclasses.dataclass
 class IPInfoResponse:
     """The response object from an free ipinfo.io GeoLocation Data query.
-    
+
     See ipinfo.io docs_ for property info.
 
     Exposes a `pprint` method that dumps the object to stdout.
@@ -103,7 +103,19 @@ class IPInfoClient:
     def __init__(self, token: str) -> None:
         self.token = token
         self.params = {"token": self.token}
-        self.session = aiohttp.ClientSession(base_url=BASE_URL)
+        self.headers = {
+            "User-Agent": f"{aiohttp.http.SERVER_SOFTWARE} aioipinfo/{__version__}"
+        }
+        self.session = aiohttp.ClientSession(
+            base_url=BASE_URL,
+            headers=self.headers,
+        )
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc, tback):
+        await self.close()
 
     async def close(self):
         """Close the underlying session."""
@@ -132,7 +144,9 @@ class IPInfoClient:
 
         try:
             address = ipaddress.ip_address(address)
-            resp = await self.session.get(f"/{address}", params=self.params)
+            resp = await self.session.get(
+                f"/{address}", params=self.params, headers=self.headers
+            )
             resp.raise_for_status()
             data = await resp.json()
             info = IPInfoResponse(**data)
