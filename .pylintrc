@@ -187,7 +187,8 @@ good-names=i,
            Run,
            _,
            fd,
-           e
+           e,
+           ip
 
 # Good variable names regexes, separated by a comma. If names match any regex,
 # they will always be accepted
@@ -426,7 +427,8 @@ disable=raw-checker-failed,
         useless-suppression,
         deprecated-pragma,
         use-symbolic-message-instead,
-        W1514
+        W1514,
+        W1203
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
