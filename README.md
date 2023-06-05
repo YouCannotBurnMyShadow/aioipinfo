@@ -1,3 +1,5 @@
 # aioipinfo
 
-Replace all instances of `aioipinfo` with your project's name and delete this message from this file in order to use this template for Python projects - or run the conversion script (`scripts/convtmpl.py`)!
+A simple, async [ipinfo.io](https://ipinfo.io) client.
+
+Exposes an `IPInfoClient` that implements one querying method, `ipinfo`, and includes a CLI client that can be run with `python3 -m aioipinfo`. See the [full docs](https://gormo.com/aioipinfo/) for more details.
