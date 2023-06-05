@@ -20,7 +20,7 @@ file = "LICENSE"
 
 [project.urls]
 Homepage = "https://github.com/gormaniac/aioipinfo"
-Documentation = "https://gormo.com/aioipinfo/"
+Documentation = "https://gormo.co/aioipinfo/"
 
 [tool.setuptools.packages.find]
 namespaces = true
