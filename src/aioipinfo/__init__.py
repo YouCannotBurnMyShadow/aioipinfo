@@ -58,11 +58,11 @@ def parse_loc(loc: str) -> tuple[str, str]:
 class IPInfoResponse:
     """The response object from an free ipinfo.io GeoLocation Data query.
 
-    See ipinfo.io docs_ for property info.
+    See ipinfo.io `docs`_ for property info.
 
     Exposes a `pprint` method that dumps the object to stdout.
 
-    _docs: https://ipinfo.io/developers/data-types#geolocation-data
+    .. _docs: https://ipinfo.io/developers/data-types#geolocation-data
     """
 
     ip: str
