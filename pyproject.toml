@@ -7,7 +7,7 @@ name = "aioipinfo"
 version = "0.1.1"
 description = "The aioipinfo Python package"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.7"
 
 # Fill in dependencies here.
 dependencies = []
