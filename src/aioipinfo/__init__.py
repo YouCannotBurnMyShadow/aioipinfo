@@ -161,3 +161,42 @@ class IPInfoClient:
             raise IPInfoError(f"Not a valid address: {err}") from err
 
         return info
+
+    async def ipinfo_dict(self, address: IPAddress) -> IPInfoResponse:
+        """Return ipinfo.io Geolocation Data information on the given IP address.
+
+        Parameters
+        ----------
+        address : IPAddress
+            The IP Address to query.
+
+        Returns
+        -------
+        IPInfoResponse
+            The parsed API response.
+
+        Raises
+        ------
+        IPInfoError
+            If any of the following exceptions occurred during the request -
+            (json.JSONDecodeError, aiohttp.ClientError, TypeError, ValueError).
+        """
+
+        try:
+            address = ipaddress.ip_address(address)
+            resp = await self.session.get(
+                f"/{address}", params=self.params, headers=self.headers
+            )
+            resp.raise_for_status()
+            data = await resp.json()
+
+        except aiohttp.ClientError as err:
+            raise IPInfoError(f"Unable to get IP info: {err}") from err
+
+        except (json.JSONDecodeError, TypeError) as err:
+            raise IPInfoError(f"Invalid API response: {err}") from err
+
+        except ValueError as err:
+            raise IPInfoError(f"Not a valid address: {err}") from err
+
+        return data
