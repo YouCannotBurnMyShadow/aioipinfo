@@ -7,9 +7,10 @@ import ipaddress
 import json
 
 import aiohttp
+from typing import Optional, Union, Tuple
 
 
-IPAddress = int | str | bytes | ipaddress.IPv4Address | ipaddress.IPv6Address
+IPAddress = Union[int, str, bytes, ipaddress.IPv4Address, ipaddress.IPv6Address]
 
 
 BASE_URL = "https://ipinfo.io"
@@ -19,7 +20,7 @@ class IPInfoError(Exception):
     """An error in the aioipinfo library."""
 
 
-def parse_org(org: str) -> tuple[str, str]:
+def parse_org(org: str) -> Tuple[str, str]:
     """Split an "org" in an IPInfoResponse into an ASN and Name.
 
     Parameters
@@ -36,7 +37,7 @@ def parse_org(org: str) -> tuple[str, str]:
     return org.split(" ", maxsplit=1)
 
 
-def parse_loc(loc: str) -> tuple[str, str]:
+def parse_loc(loc: str) -> Tuple[str, str]:
     """Split a lat,long pair str into a tuple.
 
     Parameters
@@ -66,18 +67,18 @@ class IPInfoResponse:
     """
 
     ip: str
-    hostname: str | None = None
-    city: str | None = None
-    region: str | None = None
-    country: str | None = None
-    loc: str | None = None
-    lat: str | None = None
-    long: str | None = None
-    org: str | None = None
-    asn_num: str | None = None
-    asn_name: str | None = None
-    postal: str | None = None
-    timezone: str | None = None
+    hostname: Optional[str] = None
+    city: Optional[str] = None
+    region: Optional[str] = None
+    country: Optional[str] = None
+    loc: Optional[str] = None
+    lat: Optional[str] = None
+    long: Optional[str] = None
+    org: Optional[str] = None
+    asn_num: Optional[str] = None
+    asn_name: Optional[str] = None
+    postal: Optional[str] = None
+    timezone: Optional[str] = None
 
     def __post_init__(self):
         if self.org:
