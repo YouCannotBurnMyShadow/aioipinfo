@@ -1,6 +1,6 @@
 """IPInfo CLient."""
 
-__version__ = "0.1.1.2"
+__version__ = "0.1.1"
 
 import dataclasses
 import ipaddress
@@ -185,6 +185,9 @@ class IPInfoClient:
 
         try:
             address = ipaddress.ip_address(address)
+            if not address.is_global:
+                return None
+            
             resp = await self.session.get(
                 f"/{address}", params=self.params, headers=self.headers
             )
